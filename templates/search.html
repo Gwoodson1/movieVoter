@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+    <form action="/search" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="movie" name="movie" placeholder="Movie Name" type="text">
+            <button type="submit"> Search </button>
+        </div>
+    </form>
+    {%for movie in movies%}
+    <table class="centertable">
+        <thead class="blue">
+            <tr>
+                <th class="padding">Title</th>
+                <th class="padding">Release Year</th>
+            </tr>
+        </thead>
+        <tr>
+            <td id="moviename" name="moviename" class="padding" value="{{movie.title}}" type="text">{{movie.title}}</td>
+            <td class="padding">{{movie.year}}</td>
+        </td>
+        </tr>
+    </table>
+    {% endfor %}
+{% endblock %}

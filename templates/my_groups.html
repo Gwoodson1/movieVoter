@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My Groups
+{% endblock %}
+
+{% block main %}
+<h2 class="padding blue"> My Groups </h2>
+    {%for group in groups %}
+    <h3 class="padding blue">{{group}}</h3>
+    <ul class="padding" style="list-style-type:none;">
+        {% for person in groups[group] %}
+        <li class="centered">{{person.username}}</li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+{% endblock %}

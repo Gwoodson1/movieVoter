@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+    <form action="/search" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="movie" name="movie" placeholder="Movie Name" type="text">
+            <button type="submit"> Search </button>
+        </div>
+    </form>
+    {%for movie in movies%}
+    <table class="center">
+        <thead class="blue">
+            <tr>
+                <th class="padding">Title</th>
+                <th class="padding">Release Year</th>
+                <th class="padding"> Group </th>
+                <th class="padding"> Submit </th>
+            </tr>
+        </thead>
+        <tr>
+            <form action="/search" method="post">
+            <td id="moviename" class="padding">{{movie.title}}</td>
+            <td class="padding">{{movie.year}}</td>
+            <td>
+                <div class="mb-3">
+                    <select id="groupname" name="groupname" placeholder="Group Name" type="text">
+                        <option disabled selected>Group Name</option>
+                        {%for group in groups %}
+                        <option value = "{{group.groupname}}"> {{group.groupname}} </option>
+                        {%endfor%}
+                    </select>
+                </div></td>
+            <td>
+            <button class="btn btn-primary" type="submit">Add to Watch List</button>
+        </form>
+    </td>
+
+        </tr>
+    </table>
+    <div class="green">{{confirmation}}</div>
+    {% endfor %}
+{% endblock %}

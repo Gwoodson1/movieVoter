@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Member
+{% endblock %}
+
+{% block main %}
+<form action="/add_member" method="post">
+    <div class="mb-3">
+        <select id="groupname" name="groupname" placeholder="Group Name" type="text">
+            <option disabled selected>Group Name</option>
+            {%for group in groups %}
+            <option value = "{{group.groupname}}"> {{group.groupname}} </option>
+            {%endfor%}
+        </select>
+    </div>
+    <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="membername" name="membername" placeholder="Member Name" type="text">
+    </div>
+    <button class="btn btn-primary" type="submit">Add Member</button>
+    <div class="green">{{confirmation}}</div>
+</form>
+{% endblock %}

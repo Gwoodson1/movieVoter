@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+    <form action="/add_watchlist" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="movie" name="movie" placeholder="Movie Name" type="text">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="year" name="year" placeholder="Release Year" type="text">
+            <select id="groupname" name="groupname" placeholder="Group Name" type="text">
+                <option disabled selected>Group Name</option>
+                {%for group in groups %}
+                <option value="{{group.groupname}}"> {{group.groupname}} </option>
+                {%endfor%}
+            </select>
+            <button type="submit"> Add to Watch List </button>
+        </div>
+    </form>
+    <div class="green">{{confirmation}}</div>
+
+{% endblock %}

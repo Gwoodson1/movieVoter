@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Rankings
+{% endblock %}
+
+{% block main %}
+<h2 class="padding blue"> RANKINGS </h2>
+    {%for group in groups %}
+    <h3 class="padding blue">{{group.groupname}}</h3>
+    <ol class="padding center">
+        {% for movie in group.movies %}
+        <li>{{movie.title}} ({{movie.year}}), VOTES: {{movie.frequency}}</li>
+        {% endfor %}
+    </ol>
+    {% endfor %}
+{% endblock %}
